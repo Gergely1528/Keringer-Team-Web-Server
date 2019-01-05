@@ -14,8 +14,8 @@ export const queries = `
 `;
 
 export const mutations = `
-CreateRole: Boolean :Roles
-UpdateRole: Boolean :Roles
-DeleteRole: Boolean :Roles
+CreateRole: Boolean 
+UpdateRole: Boolean 
+DeleteRole: Boolean 
 
 `;
