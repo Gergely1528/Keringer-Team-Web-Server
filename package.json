@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Apollo GraphQL Server with Express",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gergely1528/Keringer-Team-Web-Server.git"
+  },
+  "author": "Szabó Gergely",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gergely1528/Keringer-Team-Web-Server/issues"
+  },
+  "homepage": "https://github.com/Gergely1528/Keringer-Team-Web-Server#readme",
+  "dependencies": {
+    "apollo-server-express": "^2.3.1",
+    "graphql": "^14.0.2"
+  }
+}
