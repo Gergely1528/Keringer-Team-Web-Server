@@ -5,7 +5,7 @@ const types = [];
 const queries = [];
 const mutations = [];
 
-const schemas = [User,Roles];
+const schemas = [User, Roles];
 
 schemas.forEach((s) => {
   types.push(s.types);

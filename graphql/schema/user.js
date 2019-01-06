@@ -1,6 +1,6 @@
 export const types = `
   type User {
-    id: Int!
+    id: ID!
     email: String!
     password: String!
   }
@@ -8,10 +8,10 @@ export const types = `
 
 export const queries = `
   getUser(id: Int!): User 
-  allUsers(key: Int!, limit: Int!): [User!]!
+  allUser: [User!]!
 `;
 
 export const mutations = `
-  createUser(title: String!): User!
+  createUser(email: String!, password: String!): User
 
 `;
