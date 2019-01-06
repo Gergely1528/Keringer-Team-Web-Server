@@ -9,12 +9,14 @@ const apollo = new ApolloServer({ typeDefs, resolvers });
 const users = [];
 apollo.applyMiddleware({ app })
 
-mongoose.connect('mongodb://elynea:Narzie2012rohaN@ds137019.mlab.com:37019/keringerteam')
-.then(() => {
-  app.listen({ port: 4000 }, () =>
+mongoose.connect('mongodb://elynea:Narzie2012rohaN@ds137019.mlab.com:37019/keringerteam',{ useNewUrlParser: true })
+  .then(() => {
+    console.log(`🚀 Database Connected sucessfully!`);
+  })
+  .catch(err => {
+    console.log(err);
+  })
+;
+app.listen({ port: 4000 }, () =>
   console.log(`🚀 Server ready at http://localhost:4000`)
-)
-})
-.catch(err => {
-  console.log(err) });
-
+);
