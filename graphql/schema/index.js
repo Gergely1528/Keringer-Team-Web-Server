@@ -1,6 +1,8 @@
 import * as User from './user';
 import * as Roles from './roles';
 
+import { gql } from 'apollo-server-express';
+
 const types = [];
 const queries = [];
 const mutations = [];
@@ -13,7 +15,7 @@ schemas.forEach((s) => {
   mutations.push(s.mutations);
 });
 
-export default `
+export default  gql`
 
 
   ${types.join('\n')}

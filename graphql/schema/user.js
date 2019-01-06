@@ -7,7 +7,9 @@ export const types = `
 `;
 
 export const queries = `
-  getUser(id: Int!): User 
+  teszt: String
+  hello: String
+  getUser(email: String!): User 
   allUser: [User!]!
 `;
 
