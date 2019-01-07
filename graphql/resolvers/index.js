@@ -1,14 +1,7 @@
+import user from './user'
 
-export default {
 
-    Query: {
+export default [
+  user
 
-        hello: () => 'Hello World!',
-        teszt: () => 'Teszt'
-
-    },
-
-    Mutation: {
-        
-    }
-};
+]
