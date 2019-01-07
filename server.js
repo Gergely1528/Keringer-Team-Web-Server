@@ -7,10 +7,11 @@ import mongoose from 'mongoose';
 require('dotenv').config({path: 'variables.env'});
 
 const app = express();
-const apollo = new ApolloServer({ typeDefs, resolvers});
 
+const apollo = new ApolloServer({ typeDefs, resolvers});
 apollo.applyMiddleware({ app })
 
+// Adatbázis kapcsolódás
 mongoose.connect(process.env.DB_CONNECTION_STRING,{ useNewUrlParser: true })
   .then(() => {
     console.log(`🚀 Database Connected sucessfully!`);
@@ -19,6 +20,7 @@ mongoose.connect(process.env.DB_CONNECTION_STRING,{ useNewUrlParser: true })
     console.log(err);
   })
 ;
+//Alkalmazás elindítása
 app.listen({url: process.env.URL,port:process.env.PORT}, () =>
   console.log(`🚀 Server ready at ${process.env.URL}:${process.env.PORT}`)
 );
