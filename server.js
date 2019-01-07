@@ -4,12 +4,14 @@ import typeDefs from './graphql/schema';
 import resolvers from './graphql/resolvers';
 import mongoose from 'mongoose';
 
+require('dotenv').config({path: 'variables.env'});
+
 const app = express();
 const apollo = new ApolloServer({ typeDefs, resolvers});
 
 apollo.applyMiddleware({ app })
 
-mongoose.connect('mongodb://elynea:Narzie2012rohaN@ds137019.mlab.com:37019/keringerteam',{ useNewUrlParser: true })
+mongoose.connect(process.env.DB_CONNECTION_STRING,{ useNewUrlParser: true })
   .then(() => {
     console.log(`🚀 Database Connected sucessfully!`);
   })
@@ -17,6 +19,6 @@ mongoose.connect('mongodb://elynea:Narzie2012rohaN@ds137019.mlab.com:37019/kerin
     console.log(err);
   })
 ;
-app.listen({ port: 4000 }, () =>
-  console.log(`🚀 Server ready at http://localhost:4000`)
+app.listen({url: process.env.URL,port:process.env.PORT}, () =>
+  console.log(`🚀 Server ready at ${process.env.URL}:${process.env.PORT}`)
 );
