@@ -8,7 +8,16 @@ require('dotenv').config({path: 'variables.env'});
 
 const app = express();
 
-const apollo = new ApolloServer({ typeDefs, resolvers});
+const apollo = new ApolloServer({ 
+  typeDefs, 
+  resolvers,
+  formatError: error => {
+  //console.log(error);
+  //return new Error('Internal server error');
+  // Or, you can delete the exception information
+  delete error.extensions;
+  return error;
+}});
 apollo.applyMiddleware({ app })
 
 // Adatbázis kapcsolódás
