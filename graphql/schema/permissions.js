@@ -3,70 +3,32 @@ import { gql } from 'apollo-server-express';
 export default gql`
 """Felhasználói jogosultságok."""    
 type Permission {
-    """A felhasználó egyedi azonosítója."""
+    """A jogosultság bejegyzés egyedi azonosítója az adatbázisban."""
     id: ID
-    """Aktuális felhasználó lekérdezése."""
+    """A felhasználó email címe a jogosultságok rendszerezéséhez."""
+    email: String
+    """Jogosultság a saját felhasználói adatainak lekérdezésére. """
     readUser: Boolean
-    """Az összes felhasználó lekérdezése."""
+    """Jogosultság az összes felhasználó adatainak lekérdezésére."""
     readUsers: Boolean
-    """Felhasználó létrehozása"""
+    """Jogosultság új felhasználó létrehozására. """
     createUser: Boolean
-    """Felhasználó módosítása"""
+    """Jogosultság a felhasználói adatok módosítására."""
     updateUser: Boolean
-    """Felhasználó törlése"""
-    deleleteUser: Boolean
-    """Felhasználói belépés"""
-    loginUser: Boolean
+    """Jogosultság felhasználó törlésére."""
+    deleteUser: Boolean
+    """Belépési engedély a rendszerbe."""
+    loginUser: Boolean   
 }
 
 
 extend type Query {
-    readpermission: Permission
-    readpermissions: [Permission!]!
+    readPermission(email: String): Permission
 } 
     
 extend type Mutation {
-    createPermission("""A felhasználó egyedi azonosítója."""
-    id: ID
-    """Aktuális felhasználó lekérdezése."""
-    readUser: Boolean
-    """Az összes felhasználó lekérdezése."""
-    readUsers: Boolean
-    """Felhasználó létrehozása"""
-    createUser: Boolean
-    """Felhasználó módosítása"""
-    updateUser: Boolean
-    """Felhasználó törlése"""
-    deleleteUser: Boolean
-    """Felhasználói belépés"""
-    loginUser: Boolean): Permission
-    updatePermission("""A felhasználó egyedi azonosítója."""
-    id: ID
-    """Aktuális felhasználó lekérdezése."""
-    readUser: Boolean
-    """Az összes felhasználó lekérdezése."""
-    readUsers: Boolean
-    """Felhasználó létrehozása"""
-    createUser: Boolean
-    """Felhasználó módosítása"""
-    updateUser: Boolean
-    """Felhasználó törlése"""
-    deleleteUser: Boolean
-    """Felhasználói belépés"""
-    loginUser: Boolean): Permission
-    deletePermission("""A felhasználó egyedi azonosítója."""
-    id: ID
-    """Aktuális felhasználó lekérdezése."""
-    readUser: Boolean
-    """Az összes felhasználó lekérdezése."""
-    readUsers: Boolean
-    """Felhasználó létrehozása"""
-    createUser: Boolean
-    """Felhasználó módosítása"""
-    updateUser: Boolean
-    """Felhasználó törlése"""
-    deleleteUser: Boolean
-    """Felhasználói belépés"""
-    loginUser: Boolean): Permission
+    createPermission(email: String): Permission
+    updatePermission(email: String): Permission
+    deletePermission(email: String): Permission
 }
 `
