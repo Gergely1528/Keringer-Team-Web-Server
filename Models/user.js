@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
   },
   // A felhasználó vezetékneve
   firstname: {
-    type: Number,
+    type: String,
     required: true
   },
   // A felhasználó keresztneve
