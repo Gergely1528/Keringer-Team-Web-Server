@@ -4,7 +4,7 @@ export default gql`
 """Felhasználók."""
 type User {
     """A felhasználó egyedi azonosítója."""
-    id: ID
+    id: ID!
     """A felhasználó Email címe."""
     email: String! 
     """ A felhasználó jelszava."""
@@ -25,7 +25,7 @@ type User {
 """Felhasználók típus lekérdezései"""
 type Query {
     """Aktuális felhasználó lekérdezése."""
-    readUser: User!
+    readUser(email: String): User
     """Az összes felhasználó lekérdezése."""
     readUsers: [User!]!
 } 
@@ -34,9 +34,9 @@ type Mutation {
     """Felhasználó létrehozása"""  
     createUser(email: String password: String, firstname: String, lastname: String, creator: String, created: String, updater: String, updated: String): User
     """Felhasználó módosítása"""  
-    updateUser(email: String, password: String, firstname: String, lastname: String, creator: String, created: String, updater: String, updated: String): User
+    updateUser(email: String, firstname: String, lastname: String, updater: String, updated: String): User
     """Felhasználó törlése"""  
-    deleteUser(firstname: String, lastname: String): User
+    deleteUser(email: String): User
     """Felhasználói belépés""" 
     loginUser(email:String, password: String): Token
 }
